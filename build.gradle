@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+}
+
+plugins {
+//    id 'org.springframework.boot' version '1.5.2.RELEASE'
+    id "com.mageddo.gradle-embed-maven-repo" version "1.0.7"
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url "file://${rootDir}/maven"
+    }
+    mavenCentral()
+}
+
+
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.2.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.2.RELEASE'
+    compile group: 'com.atomikos', name: 'transactions-essentials-all', version: '3.6.4'
+
+    compile group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.3'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+    compile group: 'hsqldb', name: 'hsqldb', version: '1.8.0.10'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.41'
+}
+
+task createMirror(type: RepoBuilder){
+    mavenRepoFolder = file("${rootDir}/maven")
+}
