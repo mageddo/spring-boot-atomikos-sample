@@ -1,0 +1,1 @@
+This is only a didactic sample of how to use HIBERNATE + ATOMIKOS + SPRING BOOT to manage multiple databases and controll it transactionally, this code was tested in another project then extracted here, this way can be used as example
